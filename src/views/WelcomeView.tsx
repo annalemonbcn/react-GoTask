@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import StyledButton from "../components/utils/buttons/Button";
 import TitleH1 from "../components/utils/titles/TitleH1";
+import welcome from "../images/welcome.png"
 
 const WelcomeViewWrapper = styled.div`
   width: 100vw;
@@ -10,9 +11,12 @@ const WelcomeViewWrapper = styled.div`
   padding: 20px;
 `;
 
+const ImageWrapper = styled.div`
+  margin-top: 20%;
+`
+
 const TextWrapper = styled.div`
-  position: relative;
-  top: 60%;
+  margin-top: 8rem;
 `;
 
 const ButtonWrapper = styled.div`
@@ -24,6 +28,9 @@ const ButtonWrapper = styled.div`
 const WelcomeView = () => {
   return (
     <WelcomeViewWrapper className="welcomeView">
+      <ImageWrapper>
+        <img src={welcome} alt="" />
+      </ImageWrapper>
       <TextWrapper>
         <TitleH1>Welcome to Go Task</TitleH1>
         <p>A workspace to increase your productivity.</p>
