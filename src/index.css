@@ -1,22 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 
 * {
   min-width: 0;
-  font: inherit;;
+  font: inherit;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-img, video, svg {
+img,
+video,
+svg {
   display: block;
   height: auto;
   max-width: 100%;
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -24,7 +28,12 @@ body {
   min-height: 100dvh;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
@@ -32,4 +41,7 @@ p {
   text-wrap: pretty;
 }
 
-
+a {
+  text-decoration: none;
+  color: inherit;
+}

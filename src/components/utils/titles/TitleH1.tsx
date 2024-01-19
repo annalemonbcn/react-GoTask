@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { colors } from "../../../theme";
 
 const TitleH1 = styled.h1`
-  color: #232248;
+  color: ${colors.title};
   font-size: 2em;
   font-weight: 700;
 `;

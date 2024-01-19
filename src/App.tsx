@@ -1,10 +1,11 @@
 import WelcomeView from "./views/WelcomeView";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <WelcomeView />
-    </>
+    <Routes>
+      <Route path="/" element={<WelcomeView />} />
+    </Routes>
   );
 }
 

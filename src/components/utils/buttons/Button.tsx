@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { colors } from "../../../theme";
+import { Link } from "react-router-dom";
 
 interface ButtonProps {
   text: string;
@@ -10,7 +12,7 @@ const StyledButton = styled.div<ButtonProps>`
   padding: 12px 24px;
 
   color: ${(props) => (props.$primary ? "white" : "black")};
-  background-color: ${(props) => (props.$primary ? "#5e87e3" : "white")};
+  background-color: ${(props) => (props.$primary ? colors.primary : "white")};
 
   font-size: 20px;
   text-align: center;
@@ -20,7 +22,11 @@ const StyledButton = styled.div<ButtonProps>`
 `;
 
 const Button = ({ text, $primary }: ButtonProps) => {
-  return <StyledButton $primary={$primary}>{text}</StyledButton>;
+  return (
+    <StyledButton $primary={$primary}>
+      <Link to="/tasks">{text}</Link>
+    </StyledButton>
+  );
 };
 
 export default Button;
