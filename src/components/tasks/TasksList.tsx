@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import tasks from "../../data";
-import Task from "./Task";
+import TaskWithDrawer from "./TaskWithDrawer";
 
 const TasksListWrapper = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const TasksList = () => {
   return (
     <TasksListWrapper>
       {tasks.map((task, index) => {
-        return <Task key={index} task={task} />;
+        return <TaskWithDrawer key={index} task={task} />;
       })}
     </TasksListWrapper>
   );

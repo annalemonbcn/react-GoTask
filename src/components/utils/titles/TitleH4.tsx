@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { colors } from "../../../theme";
 
-const TitleH3 = styled.h3`
+const TitleH4 = styled.h4`
   color: ${colors.title};
-  font-size: 1em;
+  font-size: 14px;
   font-weight: 500;
-  margin-top: 10px;
+  margin: 0;
 `;
 
-export default TitleH3;
+export default TitleH4;

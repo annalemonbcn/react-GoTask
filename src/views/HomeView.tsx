@@ -5,6 +5,7 @@ import TasksSection from "../components/tasks/TasksSection";
 
 const HomeViewWrapper = styled.div`
   padding: 20px;
+  background: linear-gradient(180deg, #FFF 0%, #DFE4F1 100%);
 `;
 
 const HomepageHeading = styled.div`

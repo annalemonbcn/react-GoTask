@@ -2,6 +2,6 @@ export type Task = {
   title: string;
   description: string;
   createdOn: Date;
-  limitDate: Date;
+  deadline: Date;
   status: string;
 };
