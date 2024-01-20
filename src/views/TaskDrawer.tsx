@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Back from "../components/taskView/Back";
+import BackRow from "../components/taskView/BackRow";
 import { Task } from "../../types";
 import TaskView from "./TaskView";
 
@@ -15,7 +15,7 @@ interface TaskDrawerProps {
 const TaskDrawer = ({ task, toggleDrawer }: TaskDrawerProps) => {
   return (
     <TaskDrawerWrapper className="task-drawer">
-      <Back toggleDrawer={toggleDrawer} />
+      <BackRow toggleDrawer={toggleDrawer} />
       <TaskView task={task} />
     </TaskDrawerWrapper>
   );

@@ -2,11 +2,12 @@ import styled from "styled-components";
 import TitleH3 from "../utils/titles/TitleH3";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftOutlined";
 
-const BackWrapper = styled.div`
+const BackRowWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 20px;
+  margin-top: 10px;
 `;
 
 const CustomTitleH3 = styled(TitleH3)`
@@ -16,17 +17,17 @@ const CustomTitleH3 = styled(TitleH3)`
   }
 `;
 
-interface BackProps {
+interface BackRowProps {
   toggleDrawer: () => void;
 }
 
-const Back = ({ toggleDrawer }: BackProps) => {
+const BackRow = ({ toggleDrawer }: BackRowProps) => {
   return (
-    <BackWrapper onClick={toggleDrawer}>
+    <BackRowWrapper onClick={toggleDrawer}>
       <ChevronLeftRoundedIcon />
       <CustomTitleH3>Tasks list</CustomTitleH3>
-    </BackWrapper>
+    </BackRowWrapper>
   );
 };
 
-export default Back;
+export default BackRow;
