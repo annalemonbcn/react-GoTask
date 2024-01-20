@@ -15,7 +15,7 @@ const HomeView = () => {
   const name = "Anna";
 
   const today = new Date();
-  const options = { month: "short", day: "numeric", year: "numeric" };
+  const options: Intl.DateTimeFormatOptions = { month: "short", day: "numeric", year: "numeric" };
   const currentDate = today.toLocaleString("en-US", options);
 
   return (

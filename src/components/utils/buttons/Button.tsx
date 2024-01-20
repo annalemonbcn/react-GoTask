@@ -23,7 +23,7 @@ const StyledButton = styled.div<ButtonProps>`
 
 const Button = ({ text, $primary }: ButtonProps) => {
   return (
-    <StyledButton $primary={$primary}>
+    <StyledButton text={text} $primary={$primary}>
       <Link to="/tasks">{text}</Link>
     </StyledButton>
   );
