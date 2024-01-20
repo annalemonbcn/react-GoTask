@@ -2,10 +2,12 @@ import styled from "styled-components";
 import { colors } from "../theme";
 import SummarySection from "../components/summary/SummarySection";
 import TasksSection from "../components/tasks/TasksSection";
+import AddTask from "../components/AddTask";
 
 const HomeViewWrapper = styled.div`
   padding: 20px;
-  background: linear-gradient(180deg, #FFF 0%, #DFE4F1 100%);
+  background: linear-gradient(180deg, #fff 0%, #dfe4f1 100%);
+  position: relative;
 `;
 
 const HomepageHeading = styled.div`
@@ -16,7 +18,11 @@ const HomeView = () => {
   const name = "Anna";
 
   const today = new Date();
-  const options: Intl.DateTimeFormatOptions = { month: "short", day: "numeric", year: "numeric" };
+  const options: Intl.DateTimeFormatOptions = {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  };
   const currentDate = today.toLocaleString("en-US", options);
 
   return (
@@ -29,6 +35,7 @@ const HomeView = () => {
       </HomepageHeading>
       <SummarySection />
       <TasksSection />
+      <AddTask />
     </HomeViewWrapper>
   );
 };
