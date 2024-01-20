@@ -3,7 +3,7 @@ import { colors } from "../../theme";
 import { CSSProperties } from "react";
 import TitleH3 from "../utils/titles/TitleH3";
 import Badge from "../utils/buttons/Badge";
-import { Task } from "../../types";
+import type { Task } from "../../../types";
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
 
 const TaskWrapper = styled.div`
@@ -29,7 +29,18 @@ const TaskInfoWrapper = styled.div`
   margin-top: 12px;
 `;
 
-const Task = ({ task }: Task) => {
+const TaskDate = styled.p`
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`;
+
+interface TaskProps {
+  task: Task;
+}
+
+const Task = ({ task }: TaskProps) => {
   const statusValue =
     task.status === "New task"
       ? "newTask"
@@ -44,17 +55,10 @@ const Task = ({ task }: Task) => {
       <TitleH3>{task.title}</TitleH3>
       <Description>{task.description}</Description>
       <TaskInfoWrapper>
-        <p
-          style={{
-            fontSize: "12px",
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
+        <TaskDate>
           <TimerOutlinedIcon style={{ fontSize: 12 }} />
           {task.limitDate.toLocaleDateString()}
-        </p>
+        </TaskDate>
         <Badge text={task.status} status={statusValue} />
       </TaskInfoWrapper>
     </TaskWrapper>
