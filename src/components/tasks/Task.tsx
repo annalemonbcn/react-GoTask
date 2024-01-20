@@ -3,6 +3,8 @@ import { colors } from "../../theme";
 import { CSSProperties } from "react";
 import TitleH3 from "../utils/titles/TitleH3";
 import Badge from "../utils/buttons/Badge";
+import { Task } from "../../types";
+import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
 
 const TaskWrapper = styled.div`
   padding: 12px;
@@ -27,21 +29,33 @@ const TaskInfoWrapper = styled.div`
   margin-top: 12px;
 `;
 
-interface TaskProps {
-  title: string;
-  description: string;
-  limitDate: Date;
-  status: string;
-}
+const Task = ({ task }: Task) => {
+  const statusValue =
+    task.status === "New task"
+      ? "newTask"
+      : task.status === "In progress"
+      ? "inProgress"
+      : task.status === "Completed"
+      ? "completed"
+      : task.status;
 
-const Task = ({ title, description, limitDate, status }: TaskProps) => {
   return (
     <TaskWrapper>
-      <TitleH3>{title}</TitleH3>
-      <Description>{description}</Description>
+      <TitleH3>{task.title}</TitleH3>
+      <Description>{task.description}</Description>
       <TaskInfoWrapper>
-        <p>Date</p>
-        <Badge text={status} />
+        <p
+          style={{
+            fontSize: "12px",
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+          }}
+        >
+          <TimerOutlinedIcon style={{ fontSize: 12 }} />
+          {task.limitDate.toLocaleDateString()}
+        </p>
+        <Badge text={task.status} status={statusValue} />
       </TaskInfoWrapper>
     </TaskWrapper>
   );

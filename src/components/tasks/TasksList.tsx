@@ -11,15 +11,9 @@ const TasksListWrapper = styled.div`
 const TasksList = () => {
   return (
     <TasksListWrapper>
-      {tasks.map((task, index) => (
-        <Task
-          key={index}
-          title={task.title}
-          description={task.description}
-          limitDate={task.limitDate}
-          status={task.status}
-        />
-      ))}
+      {tasks.map((task, index) => {
+        return <Task key={index} task={task} />;
+      })}
     </TasksListWrapper>
   );
 };

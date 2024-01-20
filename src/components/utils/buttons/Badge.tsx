@@ -1,12 +1,27 @@
 import styled from "styled-components";
 import { colors } from "../../../theme";
 
-interface BadgeProps {
-  text: string;
-  $newTask?: boolean;
-  $inProgress?: boolean;
-  $completed?: boolean;
+interface ColorPalette {
+  [status: string]: {
+    color: string;
+    softColor: string;
+  };
 }
+
+const statusColors: ColorPalette = {
+  newTask: {
+    color: colors.newTask,
+    softColor: colors.softNewTask,
+  },
+  inProgress: {
+    color: colors.inProgress,
+    softColor: colors.softInProgress,
+  },
+  completed: {
+    color: colors.completed,
+    softColor: colors.softCompleted,
+  },
+};
 
 const StyledBadge = styled.div<BadgeProps>`
   font-size: 12px;
@@ -15,28 +30,21 @@ const StyledBadge = styled.div<BadgeProps>`
   padding: 6px 10px;
   border-radius: 40px;
 
-  color: ${(props) =>
-    props.$newTask
-      ? colors.newTask
-      : props.$inProgress
-      ? colors.inProgress
-      : props.$completed
-      ? colors.completed
-      : colors.primary};
-
-  background-color: ${colors.lightBlue};
+  color: ${(props) => statusColors[props.status]?.color || ""};
+  background-color: ${(props) => statusColors[props.status]?.softColor || ""};
 `;
 
-const Badge = ({ text, $newTask, $inProgress, $completed }: BadgeProps) => {
+interface BadgeProps {
+  text: string;
+  status: string;
+}
+
+const Badge = ({ text, status }: BadgeProps) => {
   return (
-    <StyledBadge
-      $newTask={$newTask}
-      $inProgress={$inProgress}
-      $completed={$completed}
-    >
+    <StyledBadge status={status} text={text}>
       {text}
     </StyledBadge>
   );
 };
 
-export default Badge
+export default Badge;
