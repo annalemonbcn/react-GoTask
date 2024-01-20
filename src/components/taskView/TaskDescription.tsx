@@ -35,7 +35,7 @@ const TaskDescription = ({ description }: TaskDescriptionProps) => {
   }, [description]);
 
   return (
-    <TaskDescriptionWrapper>
+    <TaskDescriptionWrapper className="task-view-description">
       <TitleH4>Task description</TitleH4>
       <StyledTextarea ref={textareaRef} name="description">
         {description}

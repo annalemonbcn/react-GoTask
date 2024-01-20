@@ -15,7 +15,7 @@ const TaskStatus = ({ status }: TaskStatusProps) => {
   const statusValue = statusConversor(status);
 
   return (
-    <TaskStatusWrapper>
+    <TaskStatusWrapper className="task-view-status">
       <TitleH4>Status</TitleH4>
       <Badge text={status} status={statusValue} taskView />
     </TaskStatusWrapper>
