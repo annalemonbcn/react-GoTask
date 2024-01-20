@@ -23,6 +23,12 @@ const statusColors: ColorPalette = {
   },
 };
 
+interface BadgeProps {
+  text: string;
+  status: string;
+  taskView?: boolean;
+}
+
 const StyledBadge = styled.div<BadgeProps>`
   font-size: 12px;
   font-weight: 600;
@@ -32,16 +38,14 @@ const StyledBadge = styled.div<BadgeProps>`
 
   color: ${(props) => statusColors[props.status]?.color || ""};
   background-color: ${(props) => statusColors[props.status]?.softColor || ""};
+
+  margin-top: ${(props) => (props.taskView ? "10px" : "0")};
+  display: ${(props)=> (props.taskView ? "inline-block" : "block") }
 `;
 
-interface BadgeProps {
-  text: string;
-  status: string;
-}
-
-const Badge = ({ text, status }: BadgeProps) => {
+const Badge = ({ text, status, taskView }: BadgeProps) => {
   return (
-    <StyledBadge status={status} text={text}>
+    <StyledBadge status={status} text={text} taskView={taskView}>
       {text}
     </StyledBadge>
   );
