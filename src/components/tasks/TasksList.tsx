@@ -5,7 +5,7 @@ import TaskWithDrawer from "./TaskWithDrawer";
 const TasksListWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
 `;
 
 const TasksList = () => {
