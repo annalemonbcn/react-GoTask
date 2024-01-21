@@ -12,7 +12,7 @@ interface TaskDrawerProps {
   toggleDrawer: () => void;
 }
 
-const TaskDrawer = ({ task, toggleDrawer }: TaskDrawerProps) => {
+const TaskViewDrawer = ({ task, toggleDrawer }: TaskDrawerProps) => {
   return (
     <TaskDrawerWrapper className="task-drawer">
       <BackRow toggleDrawer={toggleDrawer} />
@@ -21,4 +21,4 @@ const TaskDrawer = ({ task, toggleDrawer }: TaskDrawerProps) => {
   );
 };
 
-export default TaskDrawer;
+export default TaskViewDrawer;

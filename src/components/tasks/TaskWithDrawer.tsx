@@ -3,10 +3,9 @@ import styled from "styled-components";
 import { colors } from "../../theme";
 import TitleH3 from "../utils/titles/TitleH3";
 import Badge from "../utils/buttons/Badge";
-import TaskDrawer from "../../views/TaskDrawer";
+import TaskViewDrawer from "../../views/TaskViewDrawer";
 import type { Task } from "../../../types";
-import Drawer from "@mui/material/Drawer";
-import Box from "@mui/material/Box";
+import { Box, Drawer } from "@mui/material";
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
 import statusConversor from "../utils/statusConversor";
 
@@ -52,18 +51,7 @@ const TaskWithDrawer = ({ task }: TaskWithDrawerProps) => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const drawerContent = (
-    <Box
-      sx={{
-        width: "100dvw",
-        minHeight: "92dvh",
-      }}
-    >
-      <TaskDrawer task={task} toggleDrawer={toggleDrawer} />
-    </Box>
-  );
-
-  const statusValue = statusConversor(task.status)
+  const statusValue = statusConversor(task.status);
 
   return (
     <>
@@ -84,7 +72,14 @@ const TaskWithDrawer = ({ task }: TaskWithDrawerProps) => {
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
       >
-        {drawerContent}
+        <Box
+          sx={{
+            width: "100dvw",
+            minHeight: "92dvh",
+          }}
+        >
+          <TaskViewDrawer task={task} toggleDrawer={toggleDrawer} />
+        </Box>
       </Drawer>
     </>
   );

@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import TitleH4 from "../utils/titles/TitleH4";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
+import TitleH4 from "../utils/titles/TitleH4";
 
 const TaskDeadlineWrapper = styled.div`
   margin-top: 20px;
@@ -24,7 +24,6 @@ const TaskDeadline = ({ deadline }: TaskDeadlineProps) => {
   return (
     <TaskDeadlineWrapper className="task-view-deadline">
       <TitleH4>Deadline</TitleH4>
-      {/* <TaskDateWrapper>{deadline.toLocaleDateString()}</TaskDateWrapper> */}
       <DatePicker
         value={value}
         onChange={(newValue) => setValue(newValue)}

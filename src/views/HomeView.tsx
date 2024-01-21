@@ -2,16 +2,12 @@ import styled from "styled-components";
 import { colors } from "../theme";
 import SummarySection from "../components/summary/SummarySection";
 import TasksSection from "../components/tasks/TasksSection";
-import AddTask from "../components/AddTask";
+import AddTaskWithDrawer from "../components/addTask/AddTaskWithDrawer";
 
 const HomeViewWrapper = styled.div`
   padding: 20px;
   background: linear-gradient(180deg, #fff 0%, #dfe4f1 100%);
   position: relative;
-`;
-
-const HomepageHeading = styled.div`
-  margin-top: 20px;
 `;
 
 const HomeView = () => {
@@ -27,15 +23,15 @@ const HomeView = () => {
 
   return (
     <HomeViewWrapper>
-      <HomepageHeading className="home-heading">
+      <div className="home-heading">
         <p style={{ color: `${colors.grey}`, fontSize: "14px" }}>
           Good morning, {name}
         </p>
         <p style={{ fontWeight: "700", marginTop: "4px" }}>{currentDate}</p>
-      </HomepageHeading>
+      </div>
       <SummarySection />
       <TasksSection />
-      <AddTask />
+      <AddTaskWithDrawer />
     </HomeViewWrapper>
   );
 };
