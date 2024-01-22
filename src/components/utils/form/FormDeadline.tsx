@@ -5,7 +5,7 @@ import TitleH4 from "../titles/TitleH4";
 import { useState } from "react";
 
 import dayjs, { Dayjs } from "dayjs";
-import { dateToStringFormatter } from "../func/dateFormatter";
+import { dateToStringFormatter } from "../func/DateFormatter";
 
 const TaskDeadlineWrapper = styled.div`
   margin-top: 20px;
