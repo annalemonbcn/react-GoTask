@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import TitleH4 from "../utils/titles/TitleH4";
-import { useState, useRef, useEffect } from "react";
-import { colors } from "../../theme";
+import { useEffect, useRef } from "react";
+import { colors } from "../../../theme";
+import TitleH4 from "../titles/TitleH4";
 
 const TaskDescriptionWrapper = styled.div`
   margin-top: 20px;
@@ -18,13 +18,15 @@ const StyledFormDescription = styled.textarea`
   overflow: hidden;
 `;
 
-interface TaskDescriptionProps {
+interface FormDescriptionProps {
   description: string;
+  setDescription: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TaskDescription = ({ description }: TaskDescriptionProps) => {
-  const [descriptionValue, setDescriptionValue] = useState(description);
-
+const FormDescription = ({
+  description,
+  setDescription,
+}: FormDescriptionProps) => {
   const descriptionTextareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -34,25 +36,26 @@ const TaskDescription = ({ description }: TaskDescriptionProps) => {
         descriptionTextareaRef.current.scrollHeight + 20
       }px`;
     }
-  }, [descriptionValue]);
+  }, [descriptionTextareaRef]);
 
   const handleDescriptionChange = (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    setDescriptionValue(e.target.value);
+    setDescription(e.target.value);
   };
 
   return (
-    <TaskDescriptionWrapper className="task-view-description">
+    <TaskDescriptionWrapper className="task-add-description">
       <TitleH4>Task description</TitleH4>
       <StyledFormDescription
         name="description"
-        value={descriptionValue}
+        value={description}
         onChange={handleDescriptionChange}
+        placeholder="Here you can write a description of your task."
         ref={descriptionTextareaRef}
       />
     </TaskDescriptionWrapper>
   );
 };
 
-export default TaskDescription;
+export default FormDescription;

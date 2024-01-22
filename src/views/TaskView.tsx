@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Task } from "../../types";
 import TaskTitle from "../components/taskView/TaskTitle";
-import TaskDescription from "../components/taskView/TaskDescription";
-import TaskDeadline from "../components/taskView/TaskDeadline";
 import TaskStatus from "../components/taskView/TaskStatus";
+import TaskDeadline from "../components/taskView/TaskDeadline";
+import TaskDescription from "../components/taskView/TaskDescription";
 
 const TaskViewWrapper = styled.div`
   margin-top: 30px;
