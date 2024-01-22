@@ -12,7 +12,7 @@ const WelcomeViewWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
 `;
 
 const TextWrapper = styled.div`
@@ -33,7 +33,7 @@ const WelcomeView = () => {
       </ImageWrapper>
       <TextWrapper>
         <TitleH1>Welcome to Go Task</TitleH1>
-        <p style={{ marginTop: "30px" }}>
+        <p style={{ marginTop: "10px" }}>
           A workspace to increase your productivity.
         </p>
       </TextWrapper>
