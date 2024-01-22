@@ -24,7 +24,7 @@ const StyledButton = styled.div<StyledButtonProps>`
 
   font-size: 20px;
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 8px;
   border: 0;
 `;

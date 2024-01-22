@@ -5,7 +5,8 @@ import SummaryItem from "./SummaryItem";
 
 const SummarySectionWrapper = styled.section`
   padding: 10px 0;
-`
+  margin: 12px auto;
+`;
 
 const SummaryWrapper = styled.div`
   display: flex;
