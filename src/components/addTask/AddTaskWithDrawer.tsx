@@ -3,7 +3,7 @@ import { Box, Drawer } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { colors } from "../../theme";
 import styled from "styled-components";
-import AddTaskViewDrawer from "../../views/AddTaskViewDrawer";
+import DrawerView from "../../views/DrawerView";
 
 const AddTaskButtonWrapper = styled.div`
   display: flex;
@@ -46,7 +46,7 @@ const AddTaskWithDrawer = () => {
             minHeight: "92dvh",
           }}
         >
-          <AddTaskViewDrawer toggleDrawer={toggleDrawer} />
+          <DrawerView $addTask={true} toggleDrawer={toggleDrawer} />
         </Box>
       </Drawer>
     </>
