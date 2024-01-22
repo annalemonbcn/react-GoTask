@@ -7,7 +7,7 @@ import DrawerView from "../../views/DrawerView";
 import type { Task } from "../../../types";
 import { Box, Drawer } from "@mui/material";
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
-import statusConversor from "../utils/func/statusConversor";
+import { statusConversor } from "../utils/func/statusUtils";
 
 const TaskWrapper = styled.div`
   padding: 12px;

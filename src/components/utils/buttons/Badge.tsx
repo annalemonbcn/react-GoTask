@@ -29,7 +29,12 @@ interface BadgeProps {
   taskView?: boolean;
 }
 
-const StyledBadge = styled.div<BadgeProps>`
+interface StyledBadgeProps {
+  status: string;
+  taskView?: boolean;
+}
+
+const StyledBadge = styled.div<StyledBadgeProps>`
   font-size: 12px;
   font-weight: 600;
 
@@ -40,12 +45,12 @@ const StyledBadge = styled.div<BadgeProps>`
   background-color: ${(props) => statusColors[props.status]?.softColor || ""};
 
   margin-top: ${(props) => (props.taskView ? "10px" : "0")};
-  display: ${(props)=> (props.taskView ? "inline-block" : "block") }
+  display: ${(props) => (props.taskView ? "inline-block" : "block")};
 `;
 
 const Badge = ({ text, status, taskView }: BadgeProps) => {
   return (
-    <StyledBadge status={status} text={text} taskView={taskView}>
+    <StyledBadge status={status} taskView={taskView}>
       {text}
     </StyledBadge>
   );
