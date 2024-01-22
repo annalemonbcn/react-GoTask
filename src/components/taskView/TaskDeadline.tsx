@@ -10,11 +10,11 @@ const TaskDeadlineWrapper = styled.div`
 `;
 
 interface TaskDeadlineProps {
-  deadline: Date;
+  deadline: Date | null;
 }
 
 const TaskDeadline = ({ deadline }: TaskDeadlineProps) => {
-  const formattedDeadline = dateToStringFormatter(deadline);
+  const formattedDeadline = deadline ? dateToStringFormatter(deadline) : null;
 
   const [value, setValue] = useState<Dayjs | null>(dayjs(formattedDeadline));
 
