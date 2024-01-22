@@ -5,8 +5,9 @@ import FormStatus from "../components/utils/form/FormStatus";
 import FormDeadline from "../components/utils/form/FormDeadline";
 import Button from "../components/utils/buttons/Button";
 import { useState, useContext } from "react";
-import CustomSnackbar from "../components/snackbar/SingleSnackbar";
+// import CustomSnackbar from "../components/snackbar/SingleSnackbar";
 import { TasksContext } from "../api/context/TasksProvider";
+import { toast } from "sonner";
 
 const FormWrapper = styled.form`
   margin-top: 30px;
@@ -35,13 +36,6 @@ const AddTaskView = ({ toggleDrawer }: AddTaskViewProps) => {
   const [deadline, setDeadline] = useState<Date | null>(null);
   const [status, setStatus] = useState<string>("New task");
 
-  // Snackbar states
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
-  const handleSnackbarClose = () => {
-    setSnackbarMessage("");
-  };
-
   const handleSubmit = () => {
     try {
       const newTask = {
@@ -52,14 +46,13 @@ const AddTaskView = ({ toggleDrawer }: AddTaskViewProps) => {
         createdOn: new Date(),
       };
       console.log("newTask", newTask);
+
       // Add task to tasks array
-      const newContextTasks  = [...contextTasks, newTask];
+      const newContextTasks = [...contextTasks, newTask];
       setContextTasks(newContextTasks);
 
-      // TODO: position snackbar
       // Show snackbar message
-      setSnackbarOpen(true);
-      setSnackbarMessage("Task added successfully");
+      toast.success("Task added sucessfully");
 
       // Clean form
       setTitle("");
@@ -70,34 +63,26 @@ const AddTaskView = ({ toggleDrawer }: AddTaskViewProps) => {
       // Toggle drawer
       setTimeout(() => {
         toggleDrawer();
-      }, 3000);
+      }, 2000);
     } catch (error) {
-      setSnackbarMessage("Error while adding a new task. Try again later");
+      toast.success("Error while adding a new task. Please try again");
       console.error("Error adding task:", error);
     }
   };
 
   return (
-    <>
-      <FormWrapper className="task-view" onSubmit={handleSubmit}>
-        <FormTitle title={title} setTitle={setTitle} />
-        <FormDescription
-          description={description}
-          setDescription={setDescription}
-        />
-        <FormDeadline setDeadline={setDeadline} />
-        <FormStatus status={status} setStatus={setStatus} />
-        <ButtonWrapper>
-          <Button text="Add task" $primary onClick={handleSubmit} />
-        </ButtonWrapper>
-      </FormWrapper>
-      <CustomSnackbar
-        open={snackbarOpen}
-        setOpen={setSnackbarOpen}
-        message={snackbarMessage}
-        onClose={handleSnackbarClose}
+    <FormWrapper className="task-view" onSubmit={handleSubmit}>
+      <FormTitle title={title} setTitle={setTitle} />
+      <FormDescription
+        description={description}
+        setDescription={setDescription}
       />
-    </>
+      <FormDeadline setDeadline={setDeadline} />
+      <FormStatus status={status} setStatus={setStatus} />
+      <ButtonWrapper>
+        <Button text="Add task" $primary onClick={handleSubmit} />
+      </ButtonWrapper>
+    </FormWrapper>
   );
 };
 
