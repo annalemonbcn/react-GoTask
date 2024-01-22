@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import TitleH4 from "../utils/titles/TitleH4";
 import Badge from "../utils/buttons/Badge";
-import statusConversor from "../utils/statusConversor";
+import statusConversor from "../utils/func/statusConversor";
 
 const TaskStatusWrapper = styled.div`
   margin-top: 20px;

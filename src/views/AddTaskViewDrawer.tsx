@@ -14,7 +14,7 @@ const AddTaskViewDrawer = ({ toggleDrawer }: AddTaskViewDrawerProps) => {
   return (
     <AddTaskViewDrawerWrapper className="task-drawer">
       <BackRow toggleDrawer={toggleDrawer} />
-      <AddTaskView />
+      <AddTaskView toggleDrawer={toggleDrawer} />
     </AddTaskViewDrawerWrapper>
   );
 };

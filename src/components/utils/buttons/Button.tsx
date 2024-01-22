@@ -1,13 +1,21 @@
 import styled from "styled-components";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { colors } from "../../../theme";
 import { Link } from "react-router-dom";
 
 interface ButtonProps {
   text: string;
   $primary?: boolean;
+  to?: string;
+  onClick?: () => void;
 }
 
-const StyledButton = styled.div<ButtonProps>`
+interface StyledButtonProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  $primary?: boolean;
+}
+
+const StyledButton = styled.div<StyledButtonProps>`
   width: 100%;
   padding: 12px 24px;
 
@@ -21,10 +29,20 @@ const StyledButton = styled.div<ButtonProps>`
   border: 0;
 `;
 
-const Button = ({ text, $primary }: ButtonProps) => {
-  return (
-    <StyledButton text={text} $primary={$primary}>
-      <Link to="/tasks">{text}</Link>
+const Button = ({ text, $primary, to, onClick }: ButtonProps) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
+  return to ? (
+    <StyledButton $primary={$primary}>
+      <Link to={to}>{text}</Link>
+    </StyledButton>
+  ) : (
+    <StyledButton $primary={$primary} onClick={handleClick}>
+      {text}
     </StyledButton>
   );
 };

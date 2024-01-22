@@ -6,12 +6,12 @@ import styled from "styled-components";
 import AddTaskViewDrawer from "../../views/AddTaskViewDrawer";
 
 const AddTaskButtonWrapper = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
   position: fixed;
   bottom: 3em;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
 `;
 
@@ -26,7 +26,11 @@ const AddTaskWithDrawer = () => {
     <>
       <AddTaskButtonWrapper className="button-addTask" onClick={toggleDrawer}>
         <AddCircleIcon
-          style={{ fontSize: "3em" }}
+          style={{
+            fontSize: "3em",
+            backgroundColor: "white",
+            borderRadius: "100%",
+          }}
           sx={{ color: `${colors.primary}` }}
         />
       </AddTaskButtonWrapper>

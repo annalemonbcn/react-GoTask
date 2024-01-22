@@ -1,6 +1,7 @@
+import React from "react";
 import styled from "styled-components";
 import { colors } from "../../../theme";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const StyledFormTitle = styled.textarea`
   color: ${colors.title};
@@ -16,8 +17,12 @@ const StyledFormTitle = styled.textarea`
   border-bottom: 1px solid ${colors.borderGrey};
 `;
 
-const FormTitle = () => {
-  const [titleValue, setTitleValue] = useState("");
+interface FormTitleProps {
+  title: string;
+  setTitle: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const FormTitle = ({ title, setTitle }: FormTitleProps) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
@@ -27,7 +32,7 @@ const FormTitle = () => {
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTitleValue(e.target.value);
+    setTitle(e.target.value);
   };
 
   return (
@@ -35,7 +40,7 @@ const FormTitle = () => {
       ref={textareaRef}
       className="task-add-title"
       name="title"
-      value={titleValue}
+      value={title}
       placeholder="New task title"
       onChange={handleInputChange}
     />

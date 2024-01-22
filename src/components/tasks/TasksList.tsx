@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import tasks from "../../data";
+// import tasksData from "../../data";
+import { TasksContext } from "../../api/context/TasksProvider";
 import TaskWithDrawer from "./TaskWithDrawer";
+import { useContext } from "react";
 
 const TasksListWrapper = styled.div`
   display: flex;
@@ -9,9 +11,11 @@ const TasksListWrapper = styled.div`
 `;
 
 const TasksList = () => {
+  const { contextTasks } = useContext(TasksContext)!;
+
   return (
     <TasksListWrapper>
-      {tasks.map((task, index) => {
+      {contextTasks.map((task, index) => {
         return <TaskWithDrawer key={index} task={task} />;
       })}
     </TasksListWrapper>

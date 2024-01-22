@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { colors } from "../../../theme";
 import TitleH4 from "../titles/TitleH4";
 
@@ -18,9 +18,15 @@ const StyledFormDescription = styled.textarea`
   overflow: hidden;
 `;
 
-const FormDescription = () => {
-  const [descriptionValue, setDescriptionValue] = useState("");
+interface FormDescriptionProps {
+  description: string;
+  setDescription: React.Dispatch<React.SetStateAction<string>>;
+}
 
+const FormDescription = ({
+  description,
+  setDescription,
+}: FormDescriptionProps) => {
   const descriptionTextareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -35,7 +41,7 @@ const FormDescription = () => {
   const handleDescriptionChange = (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    setDescriptionValue(e.target.value);
+    setDescription(e.target.value);
   };
 
   return (
@@ -43,7 +49,7 @@ const FormDescription = () => {
       <TitleH4>Task description</TitleH4>
       <StyledFormDescription
         name="description"
-        value={descriptionValue}
+        value={description}
         onChange={handleDescriptionChange}
         placeholder="Here you can write a description of your task."
         ref={descriptionTextareaRef}

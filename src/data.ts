@@ -1,4 +1,6 @@
-const tasks = [
+import { Task } from "../types";
+
+const tasksData: Task[] = [
   {
     title: "Homepage Redesign",
     description:
@@ -40,4 +42,4 @@ const tasks = [
   },
 ];
 
-export default tasks;
+export default tasksData;
