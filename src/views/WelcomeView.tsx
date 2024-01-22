@@ -16,7 +16,7 @@ const ImageWrapper = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  margin-top: 50dvw;
+  margin-top: 30px;
 `;
 
 const ButtonWrapper = styled.div`
