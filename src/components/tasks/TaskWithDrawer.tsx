@@ -61,7 +61,7 @@ const TaskWithDrawer = ({ task }: TaskWithDrawerProps) => {
         <TaskInfoWrapper>
           <TaskDate>
             <TimerOutlinedIcon style={{ fontSize: 12 }} />
-            {task.deadline.toLocaleDateString()}
+            {task.deadline && task.deadline.toLocaleDateString()}
           </TaskDate>
           <Badge text={task.status} status={statusValue} />
         </TaskInfoWrapper>
