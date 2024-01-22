@@ -12,7 +12,7 @@ const WelcomeViewWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  margin-top: 20%;
+  margin-top: 40px;
 `;
 
 const TextWrapper = styled.div`
