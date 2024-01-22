@@ -16,7 +16,7 @@ const ImageWrapper = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  margin-top: 8rem;
+  margin-top: 50dvw;
 `;
 
 const ButtonWrapper = styled.div`
@@ -33,7 +33,9 @@ const WelcomeView = () => {
       </ImageWrapper>
       <TextWrapper>
         <TitleH1>Welcome to Go Task</TitleH1>
-        <p>A workspace to increase your productivity.</p>
+        <p style={{ marginTop: "30px" }}>
+          A workspace to increase your productivity.
+        </p>
       </TextWrapper>
       <ButtonWrapper>
         <StyledButton text="Let's Start" $primary={true} to="/tasks" />
