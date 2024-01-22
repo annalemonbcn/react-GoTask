@@ -19,14 +19,15 @@ const StyledFormTitle = styled.textarea`
 
 interface FormTitleProps {
   title: string;
+  $addTask: boolean;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const FormTitle = ({ title, setTitle }: FormTitleProps) => {
+const FormTitle = ({ title, $addTask, setTitle }: FormTitleProps) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
-    if (textareaRef.current) {
+    if ($addTask && textareaRef.current) {
       textareaRef.current.focus();
     }
   }, []);

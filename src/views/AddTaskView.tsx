@@ -135,7 +135,7 @@ const AddTaskView = ({ task, toggleDrawer, $addTask }: AddTaskViewProps) => {
 
   return (
     <FormWrapper className="task-view">
-      <FormTitle title={title} setTitle={setTitle} />
+      <FormTitle title={title} setTitle={setTitle} $addTask={$addTask ? true : false} />
       <FormDescription
         description={description}
         setDescription={setDescription}
