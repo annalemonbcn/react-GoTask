@@ -22,6 +22,12 @@ const ButtonWrapper = styled.div`
   margin-top: 30px;
 `;
 
+const DeleteStyled = styled.p`
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: underline;
+`;
+
 interface AddTaskViewProps {
   task?: Task;
   toggleDrawer: () => void;
@@ -42,22 +48,23 @@ const AddTaskView = ({ task, toggleDrawer, $addTask }: AddTaskViewProps) => {
   );
   const [status, setStatus] = useState<string>(task ? task.status : "New task");
 
-  const handleSubmit = () => {
+  const handleAddTask = () => {
     try {
+      // New task object
       const newTask = {
+        id: contextTasks.length + 1,
         title,
         description,
         deadline,
         status,
         createdOn: new Date(),
       };
-      console.log("newTask", newTask);
 
       // Add task to tasks array
       const newContextTasks = [...contextTasks, newTask];
       setContextTasks(newContextTasks);
 
-      // Show snackbar message
+      // Show toast
       toast.success("Task added sucessfully");
 
       // Clean form
@@ -66,13 +73,63 @@ const AddTaskView = ({ task, toggleDrawer, $addTask }: AddTaskViewProps) => {
       setDeadline(null);
       setStatus("New task");
 
-      // Toggle drawer
+      // Toggle drawer after countdown
       setTimeout(() => {
         toggleDrawer();
       }, 2000);
     } catch (error) {
       toast.error("Error while adding a new task. Please try again");
       console.error("Error adding task:", error);
+    }
+  };
+
+  const handleUpdateTask = (taskId: number | undefined) => {
+    console.log("update task");
+    try {
+      // Find the task to update
+      const taskToUpdate = contextTasks.find((task) => task.id === taskId);
+      // Task obj with new info
+      let updatedTask: Task;
+      if (taskToUpdate) {
+        updatedTask = {
+          ...taskToUpdate,
+          title: title,
+          description: description,
+          deadline: deadline,
+          status: status,
+        };
+      }
+
+      // contextTasks with the new updatedTask
+      const updatedTasksList = contextTasks.map((task) =>
+        task.id === taskId ? updatedTask : task
+      );
+      // Update contextTasks
+      setContextTasks(updatedTasksList);
+
+      // Show toast
+      toast.success("Task updated sucessfully");
+    } catch (error) {
+      toast.error("Error while updating the task. Please try again");
+      console.error("Error updating task:", error);
+    }
+  };
+
+  const handleDeleteTask = (taskId: number | undefined) => {
+    try {
+      // Filter contextTasks to delete the task
+      const updatedTasks = contextTasks.filter((task) => task.id !== taskId);
+      // Update contextTasks
+      setContextTasks(updatedTasks);
+
+      // Show toast
+      toast.success("Task deleted sucessfully");
+
+      // Toggle drawer
+      toggleDrawer();
+    } catch (error) {
+      toast.error("Error while deleting the task. Please try again");
+      console.error("Error deleting task:", error);
     }
   };
 
@@ -87,9 +144,18 @@ const AddTaskView = ({ task, toggleDrawer, $addTask }: AddTaskViewProps) => {
       <FormStatus status={status} setStatus={setStatus} />
       <ButtonWrapper>
         {$addTask ? (
-          <Button text="Add task" $primary onClick={handleSubmit} />
+          <Button text="Add task" $primary onClick={handleAddTask} />
         ) : (
-          <Button text="Update task" $primary />
+          <>
+            <Button
+              text="Update task"
+              $primary
+              onClick={() => handleUpdateTask(task?.id)}
+            />
+            <DeleteStyled onClick={() => handleDeleteTask(task?.id)}>
+              Delete
+            </DeleteStyled>
+          </>
         )}
       </ButtonWrapper>
     </FormWrapper>
