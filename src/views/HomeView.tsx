@@ -37,7 +37,7 @@ const HomeView = () => {
         hour: "numeric",
         minute: "numeric",
         second: "numeric",
-        hour12: false,
+        hour12: true,
       };
 
       const formattedDate = today.toLocaleString("en-US", options);

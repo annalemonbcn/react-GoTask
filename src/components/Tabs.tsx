@@ -3,10 +3,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Box } from "@mui/material";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import TasksList from "./tasks/TasksList";
 
 import { colors } from "../theme";
+import useIsMobile from "../hooks/useIsMobile";
 
 const CustomStyledBox = styled(Box)`
   padding: 0;
@@ -16,7 +17,7 @@ const CustomStyledBox = styled(Box)`
   }
 
   @media (min-width: 1024px) {
-    padding: 0 240px;
+    padding: 0 5rem;
   }
 `;
 interface TabPanelProps {
@@ -44,25 +45,12 @@ const CustomTabPanel = (props: TabPanelProps) => {
 
 const BasicTabs = () => {
   const [value, setValue] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const isMobileScreen = useIsMobile();
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const isMobileScreen = screenWidth < 768;
 
   const tabStyles = {
     fontSize: "14px",

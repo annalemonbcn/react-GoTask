@@ -15,7 +15,7 @@ const TaskWrapper = styled.div`
   border: 1px solid ${colors.borderGrey};
   border-radius: 12px;
 
-  @media(min-width: 768px){
+  @media (min-width: 768px) {
     padding: 16px 24px;
   }
 `;
@@ -78,8 +78,8 @@ const TaskWithDrawer = ({ task }: TaskWithDrawerProps) => {
       >
         <Box
           sx={{
-            width: "100dvw",
-            minHeight: "92dvh",
+            width: "100%",
+            height: "90dvh",
           }}
         >
           <DrawerView task={task} toggleDrawer={toggleDrawer} />
