@@ -85,7 +85,7 @@ const WelcomeView = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
         <StyledButton
-          text="Let's Start"
+          text="Start"
           $primary={true}
           onClick={handleStartClick}
         />

@@ -76,7 +76,7 @@ const AddTaskView = ({ task, toggleDrawer, $addTask }: AddTaskViewProps) => {
       // Toggle drawer after countdown
       setTimeout(() => {
         toggleDrawer();
-      }, 2000);
+      }, 1000);
     } catch (error) {
       toast.error("Error while adding a new task. Please try again");
       console.error("Error adding task:", error);
@@ -109,6 +109,11 @@ const AddTaskView = ({ task, toggleDrawer, $addTask }: AddTaskViewProps) => {
 
       // Show toast
       toast.success("Task updated sucessfully");
+
+      // Toggle drawer after countdown
+      setTimeout(() => {
+        toggleDrawer();
+      }, 1000);
     } catch (error) {
       toast.error("Error while updating the task. Please try again");
       console.error("Error updating task:", error);
@@ -135,7 +140,11 @@ const AddTaskView = ({ task, toggleDrawer, $addTask }: AddTaskViewProps) => {
 
   return (
     <FormWrapper className="task-view">
-      <FormTitle title={title} setTitle={setTitle} $addTask={$addTask ? true : false} />
+      <FormTitle
+        title={title}
+        setTitle={setTitle}
+        $addTask={$addTask ? true : false}
+      />
       <FormDescription
         description={description}
         setDescription={setDescription}
