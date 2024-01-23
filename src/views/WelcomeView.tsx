@@ -21,11 +21,11 @@ const WelcomeViewWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
 const TextWrapper = styled.div`
-  margin-top: 30px;
+  margin-top: 10px;
 `;
 
 const ButtonWrapper = styled.div`
