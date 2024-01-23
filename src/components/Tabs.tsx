@@ -1,12 +1,24 @@
+import styled from "styled-components";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Box } from "@mui/material";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TasksList from "./tasks/TasksList";
 
 import { colors } from "../theme";
 
+const CustomStyledBox = styled(Box)`
+  padding: 0;
+
+  @media (min-width: 768px) {
+    padding: 0 80px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 240px;
+  }
+`;
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -32,10 +44,25 @@ const CustomTabPanel = (props: TabPanelProps) => {
 
 const BasicTabs = () => {
   const [value, setValue] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const isMobileScreen = screenWidth < 768;
 
   const tabStyles = {
     fontSize: "14px",
@@ -49,12 +76,12 @@ const BasicTabs = () => {
 
   return (
     <>
-      <Box>
+      <CustomStyledBox>
         <Tabs
           value={value}
-          variant="scrollable"
-          scrollButtons
+          variant={isMobileScreen ? "scrollable" : "standard"}
           allowScrollButtonsMobile
+          centered={isMobileScreen ? false : true}
           onChange={handleChange}
           aria-label="basic tabs"
           sx={{
@@ -70,7 +97,7 @@ const BasicTabs = () => {
           <Tab label="In progress" sx={tabStyles} />
           <Tab label="Completed" sx={tabStyles} />
         </Tabs>
-      </Box>
+      </CustomStyledBox>
       <CustomTabPanel value={value} index={0} status={"All"} />
       <CustomTabPanel value={value} index={1} status={"New task"} />
       <CustomTabPanel value={value} index={2} status={"In progress"} />

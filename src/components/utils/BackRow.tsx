@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TitleH3 from "../utils/titles/TitleH3";
+import TitleH3 from "./titles/TitleH3";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftOutlined";
 
 const BackRowWrapper = styled.div`

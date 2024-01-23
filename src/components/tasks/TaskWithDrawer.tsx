@@ -13,8 +13,11 @@ const TaskWrapper = styled.div`
   background-color: white;
   padding: 12px;
   border: 1px solid ${colors.borderGrey};
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border-radius: 12px;
+
+  @media(min-width: 768px){
+    padding: 16px 24px;
+  }
 `;
 
 const Description = styled.p<CSSProperties>`
