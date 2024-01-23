@@ -4,7 +4,6 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { colors } from "../../theme";
 import styled from "styled-components";
 import DrawerView from "../../views/DrawerView";
-import useIsMobile from "../../hooks/useIsMobile";
 
 const AddTaskButtonWrapper = styled.div`
   display: flex;
@@ -18,8 +17,6 @@ const AddTaskButtonWrapper = styled.div`
 
 const AddTaskWithDrawer = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-  const isMobileScreen = useIsMobile();
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
