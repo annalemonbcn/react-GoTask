@@ -9,7 +9,7 @@ import { dateToStringFormatter } from "../utils/func/dateFormatter";
 
 const TaskDeadlineWrapper = styled.div`
   margin-top: 20px;
-`;
+`
 
 interface FormDeadlineProps {
   setDeadline: React.Dispatch<React.SetStateAction<Date | null>>;
