@@ -24,10 +24,6 @@ const ImageWrapper = styled.div`
   margin-top: 20px;
 `;
 
-const TextWrapper = styled.div`
-  margin-top: 10px;
-`;
-
 const ButtonWrapper = styled.div`
   position: absolute;
   bottom: 20px;
@@ -63,9 +59,9 @@ const WelcomeView = () => {
       toast.success(`Welcome, ${username} :)`);
       setTimeout(() => {
         navigate("/tasks");
-      }, 1500)
+      }, 1500);
     } else {
-      toast.error("Type your name to begin")
+      toast.error("Type your name to begin");
     }
   };
 
@@ -74,17 +70,12 @@ const WelcomeView = () => {
       <ImageWrapper className="animate__animated animate__fadeInDown">
         <img src={welcome} alt="" />
       </ImageWrapper>
-      <TextWrapper>
-        <TitleH1 className="animate__animated animate__fadeInDown">
-          Welcome to Go Task
-        </TitleH1>
-        <p
-          className="animate__animated animate__fadeInDown"
-          style={{ marginTop: "10px" }}
-        >
-          A workspace to increase your productivity.
-        </p>
-      </TextWrapper>
+      <TitleH1
+        className="animate__animated animate__fadeInDown"
+        style={{ marginTop: "10px" }}
+      >
+        Welcome to Go Task
+      </TitleH1>
       <ButtonWrapper className="animate__animated animate__fadeInDown">
         <StyledInput
           type="text"
