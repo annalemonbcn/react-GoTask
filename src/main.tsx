@@ -6,6 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import TasksProvider from "./api/context/TasksProvider.tsx";
 import { Toaster } from "sonner";
+import 'animate.css';
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
