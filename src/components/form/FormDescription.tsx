@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useRef } from "react";
-import { colors } from "../../../theme";
-import TitleH4 from "../titles/TitleH4";
+import { colors } from "../../theme";
+import TitleH4 from "../utils/titles/TitleH4";
 
 const TaskDescriptionWrapper = styled.div`
   margin-top: 20px;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import TitleH4 from "../titles/TitleH4";
-import BasicSelector from "../../selector/BasicSelector";
+import TitleH4 from "../utils/titles/TitleH4";
+import BasicSelector from "../selector/BasicSelector";
 
 const FormStatusWrapper = styled.div`
   margin-top: 20px;
