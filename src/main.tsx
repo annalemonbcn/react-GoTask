@@ -6,15 +6,18 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import TasksProvider from "./api/context/TasksProvider.tsx";
 import { Toaster } from "sonner";
-import 'animate.css';
+import "animate.css";
+import UserProvider from "./api/context/UserProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <TasksProvider>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Toaster position="top-right" richColors />
-        <App />
-      </LocalizationProvider>
-    </TasksProvider>
+    <UserProvider>
+      <TasksProvider>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <Toaster position="top-right" richColors />
+          <App />
+        </LocalizationProvider>
+      </TasksProvider>
+    </UserProvider>
   </BrowserRouter>
 );

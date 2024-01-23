@@ -5,6 +5,13 @@ import welcome from "../images/welcome.png";
 import { colors } from "../theme";
 import { useRef, useEffect } from "react";
 
+import { useContext } from "react";
+import { UserContext } from "../api/context/UserProvider";
+
+import { useNavigate } from "react-router-dom";
+
+import { toast } from "sonner";
+
 const WelcomeViewWrapper = styled.div`
   width: 100vw;
   height: 100vh;
@@ -29,6 +36,7 @@ const ButtonWrapper = styled.div`
 
 const StyledInput = styled.input`
   width: 100%;
+  font-size: 14px;
   margin-bottom: 15px;
   background-color: white;
   border-radius: 8px;
@@ -38,6 +46,9 @@ const StyledInput = styled.input`
 `;
 
 const WelcomeView = () => {
+  const navigate = useNavigate();
+  const { username, setUsername } = useContext(UserContext)!;
+
   const inputRef: React.MutableRefObject<HTMLInputElement | null> =
     useRef(null);
 
@@ -46,6 +57,17 @@ const WelcomeView = () => {
       inputRef.current.focus();
     }
   }, []);
+
+  const handleStartClick = () => {
+    if (username.length > 0) {
+      toast.success(`Welcome, ${username} :)`);
+      setTimeout(() => {
+        navigate("/tasks");
+      }, 1500)
+    } else {
+      toast.error("Type your name to begin")
+    }
+  };
 
   return (
     <WelcomeViewWrapper className="welcomeView">
@@ -64,8 +86,18 @@ const WelcomeView = () => {
         </p>
       </TextWrapper>
       <ButtonWrapper className="animate__animated animate__fadeInDown">
-        <StyledInput type="text" placeholder="Your name" ref={inputRef} />
-        <StyledButton text="Let's Start" $primary={true} to="/tasks" />
+        <StyledInput
+          type="text"
+          placeholder="Type your name to begin"
+          ref={inputRef}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <StyledButton
+          text="Let's Start"
+          $primary={true}
+          onClick={handleStartClick}
+        />
       </ButtonWrapper>
     </WelcomeViewWrapper>
   );
