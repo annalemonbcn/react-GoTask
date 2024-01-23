@@ -15,17 +15,21 @@ const ProgressWrapper = styled.div`
 `;
 
 interface ProgressProps {
-  tasks: number;
+  totalTasks: number;
+  completedTasks: number;
 }
 
-const Progress = ({ tasks }: ProgressProps) => {
+const Progress = ({ totalTasks, completedTasks }: ProgressProps) => {
+
+  const progress = (completedTasks / totalTasks) * 100;
+
   return (
     <ProgressWrapper className="home-summary-progress">
       <div style={{ fontSize: "20px" }}>Progress summary</div>
       <p>
-        {tasks} {tasks > 1 ? "tasks" : "task"}
+        {totalTasks} {totalTasks > 1 ? "tasks" : "task"}
       </p>
-      <ProgressBar progress={10} />
+      <ProgressBar progress={progress} />
     </ProgressWrapper>
   );
 };

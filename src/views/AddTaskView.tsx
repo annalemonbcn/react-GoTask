@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import FormTitle from "../components/utils/form/FormTitle";
-import FormDescription from "../components/utils/form/FormDescription";
-import FormStatus from "../components/utils/form/FormStatus";
-import FormDeadline from "../components/utils/form/FormDeadline";
+import FormTitle from "../components/form/FormTitle";
+import FormDescription from "../components/form/FormDescription";
+import FormStatus from "../components/form/FormStatus";
+import FormDeadline from "../components/form/FormDeadline";
 import Button from "../components/utils/buttons/Button";
 import { useState, useContext } from "react";
 import { TasksContext } from "../api/context/TasksProvider";

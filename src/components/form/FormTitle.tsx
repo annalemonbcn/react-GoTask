@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "../../../theme";
+import { colors } from "../../theme";
 import { useEffect, useRef } from "react";
 
 const StyledFormTitle = styled.textarea`

@@ -3,7 +3,9 @@ import TitleH2 from "../utils/titles/TitleH2";
 import Progress from "../progress/Progress";
 import SummaryItem from "./SummaryItem";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { TasksContext } from "../../api/context/TasksProvider";
 
 const SummarySectionWrapper = styled.section`
   padding: 10px 0;
@@ -25,6 +27,10 @@ const SummaryWrapper = styled.div`
 `;
 
 const SummarySection = () => {
+  const { contextTasks } = useContext(TasksContext)!;
+  const totalTasks = contextTasks.length;
+  const completedTasks = contextTasks.filter((task) => task.status === "Completed").length
+
   const [openContent, setOpenContent] = useState(true);
 
   const handleOpenContent = () => {
@@ -38,12 +44,15 @@ const SummarySection = () => {
         <ExpandMoreRoundedIcon />
       </SummaryTitleWrapper>
       {openContent && (
-        <div className="animate__animated animate__fadeInDown" style={{ animationDuration: "0.4s"}}>
+        <div
+          className="animate__animated animate__fadeInDown"
+          style={{ animationDuration: "0.4s" }}
+        >
           <SummaryWrapper className="home-summary-summary">
-            <SummaryItem text="Assigned tasks" number={21} />
-            <SummaryItem text="Completed tasks" number={31} />
+            <SummaryItem text="Total tasks" number={totalTasks} />
+            <SummaryItem text="Completed tasks" number={completedTasks} />
           </SummaryWrapper>
-          <Progress tasks={15} />
+          <Progress totalTasks={totalTasks} completedTasks={completedTasks} />
         </div>
       )}
     </SummarySectionWrapper>
