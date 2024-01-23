@@ -10,6 +10,7 @@ import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
 import { statusConversor } from "../utils/func/statusUtils";
 
 const TaskWrapper = styled.div`
+  background-color: white;
   padding: 12px;
   border: 1px solid ${colors.borderGrey};
   border-top-left-radius: 12px;

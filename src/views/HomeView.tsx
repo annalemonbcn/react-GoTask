@@ -30,7 +30,7 @@ const HomeView = () => {
       <HomeViewWrapper>
         <div className="home-heading">
           <p style={{ color: `${colors.grey}`, fontSize: "14px" }}>
-            Hello, {username ? username : "user"}
+            Hello, {username ? `${username} :)` : "user"}
           </p>
           <p style={{ fontWeight: "700", marginTop: "4px" }}>{currentDate}</p>
         </div>
