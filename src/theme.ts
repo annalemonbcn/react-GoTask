@@ -11,3 +11,9 @@ export const colors: Record<string, string> = {
   completed: "#3be7a2",
   softCompleted: "rgba(59, 231, 162, 0.2)"
 };
+
+export const padding = {
+  mobile: "20px",
+  tablet: "40px",
+  desktop: "60px 13rem"
+}

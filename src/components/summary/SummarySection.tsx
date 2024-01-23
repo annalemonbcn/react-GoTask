@@ -16,6 +16,11 @@ const SummaryTitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (min-width: 768px){
+    justify-content: start;
+    gap: 20px;
+  }
 `;
 
 const SummaryWrapper = styled.div`
@@ -46,7 +51,7 @@ const SummarySection = () => {
       {openContent && (
         <div
           className="animate__animated animate__fadeInDown"
-          style={{ animationDuration: "0.4s" }}
+          style={{ animationDuration: "0.4s", marginTop: "15px" }}
         >
           <SummaryWrapper className="home-summary-summary">
             <SummaryItem text="Total tasks" number={totalTasks} />

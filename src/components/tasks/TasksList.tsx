@@ -8,6 +8,10 @@ const TasksListWrapper = styled.div`
   flex-direction: column;
   gap: 12px;
   margin-top: 15px;
+
+  @media(min-width: 768px){
+    padding: 0 40px; 
+  }
 `;
 
 interface TasksListProps {

@@ -13,7 +13,6 @@ const TasksSection = () => {
     <TasksSectionWrapper className="home-tasks">
       <TitleH2>Tasks</TitleH2>
       <BasicTabs />
-      {/* <TasksList /> */}
     </TasksSectionWrapper>
   );
 };

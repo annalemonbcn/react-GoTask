@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BackRow from "../components/taskView/BackRow";
+import BackRow from "../components/utils/BackRow";
 import { Task } from "../../types";
 import AddTaskView from "./AddTaskView";
 
