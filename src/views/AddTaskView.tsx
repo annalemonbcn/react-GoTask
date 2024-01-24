@@ -31,6 +31,7 @@ const DeleteStyled = styled.p`
   margin-top: 20px;
   text-align: center;
   text-decoration: underline;
+  cursor: pointer;
 `;
 
 interface AddTaskViewProps {
