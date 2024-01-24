@@ -7,7 +7,7 @@ import { useState } from "react";
 import TasksList from "./tasks/TasksList";
 
 import { colors } from "../theme";
-import useIsMobile from "../hooks/useIsMobile";
+import useScreenWidth from "../hooks/useScreenWidth";
 
 const CustomStyledBox = styled(Box)`
   padding: 0;
@@ -45,8 +45,9 @@ const CustomTabPanel = (props: TabPanelProps) => {
 
 const BasicTabs = () => {
   const [value, setValue] = useState(0);
-
-  const isMobileScreen = useIsMobile();
+  
+  const screenWidth = useScreenWidth();
+  const isMobileScreen = screenWidth < 768 ? true : false;
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
