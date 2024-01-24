@@ -1,12 +1,17 @@
 import styled from "styled-components";
+
 import FormTitle from "../components/form/FormTitle";
 import FormDescription from "../components/form/FormDescription";
 import FormStatus from "../components/form/FormStatus";
 import FormDeadline from "../components/form/FormDeadline";
 import Button from "../components/utils/buttons/Button";
+
 import { useState, useContext } from "react";
+
 import { TasksContext } from "../api/context/TasksProvider";
+
 import { toast } from "sonner";
+
 import { Task } from "../../types";
 
 const FormWrapper = styled.form`
@@ -39,14 +44,12 @@ const AddTaskView = ({ task, toggleDrawer, $addTask }: AddTaskViewProps) => {
   const { contextTasks, setContextTasks } = useContext(TasksContext)!;
 
   // Form states
-  const [title, setTitle] = useState<string>(task ? task.title : "");
+  const [title, setTitle] = useState<string>(task?.title || "");
   const [description, setDescription] = useState<string>(
-    task ? task.description : ""
+    task?.description || ""
   );
-  const [deadline, setDeadline] = useState<Date | null>(
-    task ? task.deadline : null
-  );
-  const [status, setStatus] = useState<string>(task ? task.status : "New task");
+  const [deadline, setDeadline] = useState<Date | null>(task?.deadline || null);
+  const [status, setStatus] = useState<string>(task?.status || "New task");
 
   const handleAddTask = () => {
     try {
@@ -143,7 +146,7 @@ const AddTaskView = ({ task, toggleDrawer, $addTask }: AddTaskViewProps) => {
       <FormTitle
         title={title}
         setTitle={setTitle}
-        $addTask={$addTask ? true : false}
+        $addTask={$addTask || false}
       />
       <FormDescription
         description={description}

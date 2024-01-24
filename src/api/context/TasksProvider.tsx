@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState, useEffect } from "react";
+import { createContext, ReactNode, useState } from "react";
 import { Task } from "../../../types";
 import tasksData from "../../data";
 
@@ -18,10 +18,6 @@ interface TasksProviderProps {
 
 const TasksProvider = (props: TasksProviderProps) => {
   const [contextTasks, setContextTasks] = useState<Task[]>(tasksData);
-
-  useEffect(() => {
-    console.log("contextTasks", contextTasks);
-  }, [contextTasks]);
 
   // Provider value
   const tasksContextValue: TasksContextProps = {

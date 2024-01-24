@@ -7,45 +7,39 @@ import DrawerView from "../../views/DrawerView";
 import useScreenWidth from "../../hooks/useScreenWidth";
 import Button from "../utils/buttons/Button";
 
-const CircleAddTaskButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  bottom: 3em;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-  cursor: pointer;
-`;
+interface StyledWrapperProps {
+  $isTablet: boolean;
+}
 
-const SquareAddTaskButtonWrapper = styled.div`
+const StyledWrapper = styled.div<StyledWrapperProps>`
   display: flex;
   justify-content: center;
   position: fixed;
-  bottom: 5em;
-  left: auto;
-  right: 10em;
+  bottom: ${({ $isTablet }) => ($isTablet ? "3em" : "5em")};
+  left: ${({ $isTablet }) => ($isTablet ? "50%" : "auto")};
+  right: ${({ $isTablet }) => ($isTablet ? "auto" : "10em")};
+  transform: ${({ $isTablet }) => ($isTablet ? "translateX(-50%)" : "none")};
   z-index: 100;
   cursor: pointer;
 `;
 
 const AddTaskWithDrawer = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const screenWidth = useScreenWidth();
+  const isTabletScreen = screenWidth < 1024 ? true : false;
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const screenWidth = useScreenWidth();
-  const isTabletScreen = screenWidth < 1024 ? true : false;
-
   return (
     <>
-      {isTabletScreen && (
-        <CircleAddTaskButtonWrapper
-          className="button-addTask"
-          onClick={toggleDrawer}
-        >
+      <StyledWrapper
+        className="button-addTask"
+        $isTablet={isTabletScreen}
+        onClick={toggleDrawer}
+      >
+        {isTabletScreen ? (
           <AddCircleIcon
             style={{
               fontSize: "3em",
@@ -54,16 +48,10 @@ const AddTaskWithDrawer = () => {
             }}
             sx={{ color: `${colors.primary}` }}
           />
-        </CircleAddTaskButtonWrapper>
-      )}
-      {!isTabletScreen && (
-        <SquareAddTaskButtonWrapper
-          className="button-addTask"
-          onClick={toggleDrawer}
-        >
+        ) : (
           <Button text="Add task" $primary />
-        </SquareAddTaskButtonWrapper>
-      )}
+        )}
+      </StyledWrapper>
 
       <Drawer
         anchor="bottom"

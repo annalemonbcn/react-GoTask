@@ -14,11 +14,22 @@ interface DrawerViewProps {
 }
 
 const DrawerView = ({ task, $addTask, toggleDrawer }: DrawerViewProps) => {
+  const renderContent = () => {
+    if (task) {
+      return <AddTaskView toggleDrawer={toggleDrawer} task={task} />;
+    }
+
+    if ($addTask) {
+      return <AddTaskView toggleDrawer={toggleDrawer} $addTask />;
+    }
+
+    return null;
+  };
+
   return (
     <DrawerWrapper className="task-drawer">
       <BackRow toggleDrawer={toggleDrawer} />
-      {task && <AddTaskView toggleDrawer={toggleDrawer} task={task} />}
-      {$addTask && <AddTaskView toggleDrawer={toggleDrawer} $addTask />}
+      {renderContent()}
     </DrawerWrapper>
   );
 };
