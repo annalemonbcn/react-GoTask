@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import TitleH2 from "../utils/titles/TitleH2";
-import BasicTabs from "../Tabs";
-
-
+import BasicTabs from "../BasicTabs";
 
 const TasksSectionWrapper = styled.section`
   padding: 10px 0;

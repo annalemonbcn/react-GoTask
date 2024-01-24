@@ -1,12 +1,16 @@
 import { useState, CSSProperties } from "react";
 import styled from "styled-components";
 import { colors } from "../../theme";
+
 import TitleH3 from "../utils/titles/TitleH3";
 import Badge from "../utils/buttons/Badge";
 import DrawerView from "../../views/DrawerView";
+
 import type { Task } from "../../../types";
+
 import { Box, Drawer } from "@mui/material";
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
+
 import { statusConversor } from "../utils/func/statusUtils";
 
 const TaskWrapper = styled.div`
@@ -55,6 +59,10 @@ const TaskWithDrawer = ({ task }: TaskWithDrawerProps) => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+  };
+
   const statusValue = statusConversor(task.status);
 
   return (
@@ -74,7 +82,7 @@ const TaskWithDrawer = ({ task }: TaskWithDrawerProps) => {
       <Drawer
         anchor="bottom"
         open={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
+        onClose={handleDrawerClose}
       >
         <Box
           sx={{

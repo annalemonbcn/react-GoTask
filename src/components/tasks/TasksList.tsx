@@ -1,7 +1,7 @@
+import React from "react";
 import styled from "styled-components";
-import { TasksContext } from "../../api/context/TasksProvider";
 import TaskWithDrawer from "./TaskWithDrawer";
-import { useContext } from "react";
+import useFilteredTasks from "../../hooks/useFilteredTasks";
 
 const TasksListWrapper = styled.div`
   display: flex;
@@ -9,8 +9,8 @@ const TasksListWrapper = styled.div`
   gap: 12px;
   margin-top: 15px;
 
-  @media(min-width: 768px){
-    padding: 0 40px; 
+  @media (min-width: 768px) {
+    padding: 0 40px;
   }
 `;
 
@@ -18,23 +18,16 @@ interface TasksListProps {
   status: string;
 }
 
-const TasksList = ({ status }: TasksListProps) => {
-  const { contextTasks } = useContext(TasksContext)!;
-
-  const filteredTasks =
-    status === "All"
-      ? contextTasks
-      : contextTasks.filter((task) => task.status === status);
-
-  console.log("filteredTasks", filteredTasks);
+const TasksList = React.memo(({ status }: TasksListProps) => {
+  const filteredTasks = useFilteredTasks(status);
 
   return (
     <TasksListWrapper>
-      {filteredTasks.map((task, index) => {
-        return <TaskWithDrawer key={index} task={task} />;
+      {filteredTasks.map((task) => {
+        return <TaskWithDrawer key={task.id} task={task} />;
       })}
     </TasksListWrapper>
   );
-};
+});
 
 export default TasksList;

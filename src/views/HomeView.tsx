@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors, padding } from "../theme";
+
 import SummarySection from "../components/summary/SummarySection";
 import TasksSection from "../components/tasks/TasksSection";
 import AddTaskWithDrawer from "../components/addTask/AddTaskWithDrawer";
@@ -17,49 +18,47 @@ const HomeViewWrapper = styled.div`
     padding: ${padding.tablet};
   }
 
-  @media (min-width: 1024px){
-    padding: ${padding.desktop}
+  @media (min-width: 1024px) {
+    padding: ${padding.desktop};
   }
+`;
+
+const HomeHeading = styled.section`
+  color: ${colors.grey};
+  font-size: 14px;
+`;
+
+const HomeUsername = styled.p`
+  font-weight: 700;
+  margin-top: 4px;
 `;
 
 const HomeView = () => {
   const { username } = useContext(UserContext)!;
-
   const [currentDate, setCurrentDate] = useState<string>("");
 
   useEffect(() => {
-    const updateDateTime = () => {
+    const getDate = () => {
       const today = new Date();
       const options: Intl.DateTimeFormatOptions = {
         month: "short",
         day: "numeric",
         year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-        hour12: true,
       };
-
-      const formattedDate = today.toLocaleString("en-US", options);
-      setCurrentDate(formattedDate);
+      return today.toLocaleString("en-US", options);
     };
-
-    // Actualizar la fecha cada segundo
-    const intervalId = setInterval(updateDateTime, 1000);
-
-    // Limpiar el intervalo al desmontar el componente
-    return () => clearInterval(intervalId);
+    setCurrentDate(getDate());
   }, []);
 
   return (
     <>
       <HomeViewWrapper>
-        <section className="home-heading">
-          <p style={{ color: `${colors.grey}`, fontSize: "14px" }}>
+        <HomeHeading className="home-heading">
+          <p style={{ color: colors.grey, fontSize: "14px" }}>
             Hello, {username ? `${username} :)` : "user"}
           </p>
-          <p style={{ fontWeight: "700", marginTop: "4px" }}>{currentDate}</p>
-        </section>
+          <HomeUsername>{currentDate}</HomeUsername>
+        </HomeHeading>
         <SummarySection />
         <TasksSection />
         <AddTaskWithDrawer />

@@ -21,18 +21,19 @@ const StyledButton = styled.div<StyledButtonProps>`
   padding: 12px 24px;
   color: ${(props) => (props.$primary ? "white" : "black")};
   background-color: ${(props) => (props.$primary ? colors.primary : "white")};
-  
+
   font-size: 20px;
   text-align: center;
   font-weight: 600;
   border-radius: 8px;
   border: 0;
-  
-    @media (min-width: 768px) {
-      max-width: 400px;
-      width: ${(props) => (props.width ? props.width : "auto")};
-    }
-  
+
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    max-width: 400px;
+    width: ${(props) => (props.width ? props.width : "auto")};
+  }
 `;
 
 const Button = ({ text, $primary, width, onClick }: ButtonProps) => {
